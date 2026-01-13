@@ -33,11 +33,11 @@ creating two different storage objects with two different type specialisations:
    ```
    + What are the reasons for using generics here?
    
-     ** YOUR ANSWER HERE **
+     ** to ensure type safety **
    
    + What are the benefits?
    
-     ** YOUR ANSWER HERE **
+     ** Easier to catch errors at compile time rather than at runtime e.g ClassCastException **
 
 Add the following code to your `Example1` class:
 
@@ -52,7 +52,20 @@ Add the following code to your `Example1` class:
    
    + What is the cause of the problems reported by the compiler, if any?
    
-     ** YOUR ANSWER HERE **
+     ** 
+   + java: incompatible types: java.lang.Object cannot be converted to BankAccount.
+   + account is declared as type object even though it holds a BankAccount instance.
+   + bankAccountStorage is type Storage<BankAccount> so its setItem method only accepts BankAccount objects.
+   + java generics checks declared type not runtime so an Object cannot be passed where java expects a BankAccount.
+   + this enforces compile time type safety by preventing incompatible type assignments.
+
+   + java: cannot find symbol / Cannot resolve method 'deposit' in 'Object'.
+   + account1 is declared as type Object so the compiler can only see the methods defined in Object. 
+   + The object class does not have a 'deposit' method so calling account1.deposit results in a compile time error.
+   + This prevents unsafe type assignment and invalid method calls at compile time.
+   + This shows how using general type such as Object prevents being able to use type specific methods.
+   + Using generics preserves type specific information and its methods. 
+   + **
 
 Now replace:
 
