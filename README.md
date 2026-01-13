@@ -78,11 +78,11 @@ Now replace:
    ```
    + How does this affect the compilation process?
    
-     ** YOUR ANSWER HERE **
+     ** it has fixed the java: incompatible types: java.lang.Object error because account is now type BankAccount  **
    
    + What is the problem, if any?
    
-     ** YOUR ANSWER HERE **
+     ** java: cannot find symbol / Cannot resolve method 'deposit' in 'Object' not resolved because account1 is still type Object **
    
 Now replace 
 
@@ -98,7 +98,9 @@ with
 
    + Does it still compile?
 
-     ** YOUR ANSWER HERE **
+     ** no. still having issues with trying to use the 'deposit' method. compiler error: java: cannot find symbol
+     symbol:   method deposit(int)
+     location: variable account1 of type java.lang.Object **
 
 Finally, replace
 
@@ -114,11 +116,20 @@ with
 
    + Does it still compile? If not, explain why.
 
-     ** YOUR ANSWER HERE **
+     ** no. stil getting java: cannot find symbol
+     symbol:   method deposit(int)
+     location: variable account1 of type java.lang.Object error. also there is an issue with:
+     // Java added var in Java 10 2018 as local variable type inference.
+     // It allows the compiler to figure out the type from the right hand side
+     //but because there is no type inside <> java thinks it is Storage<Object>
+     var bankAccountStorage = new Storage<>();
+     var stringStorage = new Storage<>();
+   **
 
    + How would you fix the error?
 
-     ** YOUR ANSWER HERE **
+     **  Declare bankAccountStorage as Storage<BankAccount> Storage<BankAccount> bankAccountStorage = new Storage<BankAccount>();
+     and declare account1 as type BankAccount **
 
 
 2. In Java, arrays are **covariant**, which means that an array of type `T1[]` can be used in a context where 
