@@ -159,7 +159,17 @@ with
 
 + Compile and run the code again. Does it still compile? Does it run? What is the output?
 
-  ** YOUR ANSWER HERE **
+  ** Yes it compiled but encountered a runtime error: 
++ "Example2
+  in test - before storing into a
++Exception in thread "main" java.lang.ArrayStoreException: BankAccount
+  at Example2.test(Example2.java:15)
+  at Example2.main(Example2.java:9)"
+ 
++ It was able to compile  because arrays are covariant --> java allowed an array of String to be passed to a method that expects array of Object.
+Runtime error happened because at runtime, in the terst method we tried to do this:  "a[1] = new BankAccount(2025)"
++ But at runtime, JVM checks and finds that "a" is actually a String[] which cannot hold a the BankAccount object "new BankAccount(2025)" 
+**
 
 3. Generics in Java, in contrast, are **invariant**, which means that the type parameters need to match exactly:
 `C<T1>` is **not** a subtype of `C<T2>` when `T1` is a subtype of `T2` (unless, of course, `T1` is the same as `T2`).
