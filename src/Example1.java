@@ -8,7 +8,9 @@ public class Example1 {
 
         // Java added var in Java 10 2018 as local variable type inference.
         // It allows the compiler to figure out the type from the right hand side
-        //but because there is no type inside <> java thinks it is Storage<Object>
+        //but because there is no type inside <> java looks at the context later where:
+        // 'account' is type Object so java infers --> Storage<Object>
+
         //var bankAccountStorage = new Storage<>();
         //var stringStorage = new Storage<>();
 

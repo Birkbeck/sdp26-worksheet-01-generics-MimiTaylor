@@ -121,9 +121,15 @@ with
      location: variable account1 of type java.lang.Object error. also there is an issue with:
      // Java added var in Java 10 2018 as local variable type inference.
      // It allows the compiler to figure out the type from the right hand side
-     //but because there is no type inside <> java thinks it is Storage<Object>
-     var bankAccountStorage = new Storage<>();
-     var stringStorage = new Storage<>();
+     //but because there is no type inside <> java looks at the context later where:
+     // 'account' is type Object so java infers --> Storage<Object>
+
+
+var bankAccountStorage = new Storage<>();
+var stringStorage = new Storage<>();
+Object account = new BankAccount(2025); // declared type is Object.
+bankAccountStorage.setItem(account); // but bankAccountStorage is type <BankAccount>
+
    **
 
    + How would you fix the error?
