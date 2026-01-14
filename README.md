@@ -167,7 +167,7 @@ with
   at Example2.main(Example2.java:9)"
  
 + It was able to compile  because arrays are covariant --> java allowed an array of String to be passed to a method that expects array of Object.
-Runtime error happened because at runtime, in the terst method we tried to do this:  "a[1] = new BankAccount(2025)"
+Runtime error happened because at runtime, in the test method we tried to do this:  "a[1] = new BankAccount(2025)"
 + But at runtime, JVM checks and finds that "a" is actually a String[] which cannot hold a the BankAccount object "new BankAccount(2025)" 
 **
 
@@ -190,7 +190,11 @@ with
 
 + Compile the code again. Does it still compile? Why not?
 
-  ** YOUR ANSWER HERE **
+  ** No it does not compile. compiler error: java: incompatible types: Storage<java.lang.String> cannot be converted to Storage<BankAccount>.
++  The test() method expects a Storage<BankAccount>, but we are passing a Storage<String>. 
++ Because Java generics are invariant --> Storage<String> is not a subtype of Storage<BankAccount>.
++ So the call is rejected at compile time to preserve type safety. 
++ **
 
 4. Study the code in class `Example4`.
 
