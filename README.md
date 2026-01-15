@@ -232,11 +232,11 @@ any `Storage<T>` for a subtype `T` of `BankAccount`.
 
 + What is the type of variable `storage1`? 
 
-  ** YOUR ANSWER HERE **
+  ** It is a Storage<SavingsAccount> (var infers type from the right i.e from the constructor new Storage<SavingsAccount>() **
 
 + Compile and run the code to make sure it can be executed successfully. What is the printed output?
 
-  ** YOUR ANSWER HERE **
+  ** "Storing 2024" **
 
 Add the following 4 lines to method `main`:
 
@@ -250,11 +250,24 @@ Add the following 4 lines to method `main`:
 
 + What is the type of variable `storage2`? What is the type of variable `storage3`?
 
-  ** YOUR ANSWER HERE **
+  ** 
++ storage2 is a Storage<BankAccount> object
++ storage3 is a Storage<Object> object
++ 
++ **
 
 + Compile the code. Does it compile? If not, what is the problem?
 
-  ** YOUR ANSWER HERE **
+  ** 
++ No it does not compile. The following error messages are shown: 
++ java: incompatible types: Storage<BankAccount> cannot be converted to Storage<SavingsAccount>
+  java: incompatible types: Storage<java.lang.Object> cannot be converted to Storage<SavingsAccount>
++ This is because store() expects a Storage<SavingsAccount> object as an argument but:
+  +       + the java compiler rejects storage2 being passed to store() because it is a Storage<BankAccount> object.
+  +       + the java compiler rejects: store3 being passed to store() because it is a Storage<Object> object.
++ Java generics are invariant so Storage<BankAccount> and Storage<Object> are not accepted where Storage<SavingsAccount> is expected.
+
+  **
 
 + Fix the compile-time error, without changing the contents of method `main` and without any code duplication.
   In other words, assume that users of your
