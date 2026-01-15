@@ -14,7 +14,7 @@ public class Example5 {
 
 // We cannot use Storage<T extends BankAccount> because Object is not a subtype of SavingsAccount or BankAccount.
 // store() "consumes" a SavingsAccount, so use a wildcard "? super"
-// (PECS: Consumer → super)
+// (PECS tells us which wildcard to use. In this case: Consumer → super)
     /* Object is a supertype of BankAccount, BankAccount is a supertype of SavingsAccount
     But because generics are invariant, the following are all unrelated types:
     Storage<SavingsAccount>
